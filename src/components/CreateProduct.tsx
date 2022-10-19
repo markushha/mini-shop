@@ -4,15 +4,15 @@ import axios from 'axios'
 import ErrorMessage from './ErrorMessage';
 
 const productData: IProduct = {
-  title: "test product",
-  price: 13.5,
-  id: 1,
+  title: "product",
+  price: 1,
+  id: 0,
   description: "lorem ipsum set",
-  image: "https://i.pravatar.cc",
-  category: "electronic",
+  image: "",
+  category: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident aliquam quas similique rerum, ut sapiente. Impedit, ad facere quia et expedita, consequatur unde accusamus animi totam accusantium, corporis facilis quam?", 
   rating: {
-    rate: 42,
-    count: 10
+    rate: 0,
+    count: 0
   }
 };
 

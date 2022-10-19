@@ -8,7 +8,7 @@ import { useState } from "react";
 import { IProduct } from "../../models";
 
 function MyShopPage() {
-  const { products, loading, error, addProduct } = useProducts();
+  const { products, loading, error, addProduct, deleteProduct } = useProducts();
   const [modal, setModal] = useState(false);
 
   const onCreateHandler = (product: IProduct) => {
@@ -24,7 +24,7 @@ function MyShopPage() {
   };
 
   setProductsID(); 
-
+  
   return (
     <>
       <div className="container mx-auto max-w-2xl">
@@ -33,7 +33,7 @@ function MyShopPage() {
 
         <div className="container mx-auto max-w-2xl pt-5">
           {products.map((product) => (
-            <Product product={product} key={product.id} />
+            <Product product={product} key={product.id} deleteProduct={deleteProduct}/>
           ))}
         </div>
 

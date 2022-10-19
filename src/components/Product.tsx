@@ -4,15 +4,16 @@ import DeleteButton from './DeleteButton';
 
 interface ProductProps {
   product: IProduct
+  deleteProduct: (id: Number) => void
 }
 
-function Product({product}: ProductProps) {
+function Product({product, deleteProduct}: ProductProps) {
   const[isOpen, setIsOpen] = useState(false);
 
-  const deleteHandler = (e: React.FormEvent) => {
-    console.log(product.id)
-  };
-
+  const onDeleteHandler = (id: Number) => {
+    deleteProduct(id);
+  }
+  
   return (
     <div className="border py-2 px-4 rounded flex flex-col items-center mb-2">
       <img className="w-1/6" src={product.image} alt={product.title} />
@@ -40,7 +41,7 @@ function Product({product}: ProductProps) {
           <p className="font-semibold">{product.category}</p>
         </div>
       )}
-      <DeleteButton key={product.id} deleteHandler={deleteHandler}></DeleteButton>
+      <DeleteButton key={product.id} product={product} onDeleteHandler={onDeleteHandler}></DeleteButton>
     </div>
   );
 }

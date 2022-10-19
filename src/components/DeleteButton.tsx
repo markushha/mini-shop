@@ -1,21 +1,20 @@
 import React from 'react'
+import { IProduct } from "../../models";
 
 interface deleteProps {
-  key: number
-  deleteHandler: (e: React.FormEvent) => void
+  product: IProduct
+  onDeleteHandler: (id: Number) => void
 }
 
-function DeleteButton({key, deleteHandler}: deleteProps) {
+function DeleteButton({ product, onDeleteHandler }: deleteProps) {
 
   return (
-    <div>
       <button
-        className=" text-white my-3 rounded-full bg-red-700 text-center h-[40px] w-[40px] hover:bg-red-500 active:bg-red-600"
-        onClick={(e) => deleteHandler(e)}
+        className="ml-[100%] translate-x-[-100%] text-white my-3 rounded-full bg-red-700 text-center h-[40px] w-[40px] hover:bg-red-500 active:bg-red-600"
+        onClick={() => {onDeleteHandler(product.id)}}
       >
         <p>-</p>
       </button>
-    </div>
   );
 }
 

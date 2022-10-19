@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import axios, {AxiosError} from 'axios'
-import { IProduct } from '../../models';
+import { useState, useEffect } from "react";
+import axios, { AxiosError } from "axios";
+import { IProduct } from "../../models";
 
 export function useProducts() {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -8,7 +8,13 @@ export function useProducts() {
   const [error, setError] = useState("");
 
   function addProduct(product: IProduct) {
-    setProducts(prev => [product,...prev])
+    setProducts((prev) => [product, ...prev]);
+  }
+
+  function deleteProduct(id: Number) {
+    const removedArr = [...products].filter((product) => product.id !== id);
+    
+    setProducts(removedArr);
   }
 
   const getProducts = async () => {
@@ -31,5 +37,5 @@ export function useProducts() {
     getProducts();
   }, []);
 
-  return { products, loading, error, addProduct }
+  return { products, loading, error, addProduct, deleteProduct };
 }
