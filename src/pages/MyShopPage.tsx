@@ -6,7 +6,6 @@ import Modal from "../components/Modal";
 import CreateProduct from "../components/CreateProduct";
 import { useState } from "react";
 import { IProduct } from "../../models";
-import InputRange from "../components/InputRange";
 
 function MyShopPage() {
   const { products, loading, error, addProduct, deleteProduct } = useProducts();
@@ -18,11 +17,13 @@ function MyShopPage() {
   };
 
   function setProductsID() {
-    products.map((product, index) => {
-      product.id = index;
+    products.map((product) => {
+      for (let i = 0; i < 6; i++) {
+        product.id = Math.floor(Math.random() * 10000);
+      }
       return null;
     });
-  };
+  }
 
   setProductsID(); 
 
@@ -33,7 +34,6 @@ function MyShopPage() {
         {loading && <Loader />}
 
         <div className="container mx-auto max-w-2xl pt-5">
-          <InputRange/>
           {products.map((product) => (
             <Product product={product} key={product.id} deleteProduct={deleteProduct}/>
           ))}
